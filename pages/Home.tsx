@@ -7,7 +7,7 @@ type HomeProps = {
 export function Home({ message }: HomeProps) {
 
   return (
-    <Layout showNavbar={false}>
+    <Layout>
       <h1>{message}</h1>
     </Layout>
   )

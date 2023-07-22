@@ -2,12 +2,11 @@ import { ComponentChildren } from "preact";
 import { Navbar } from "./Navbar";
 
 type LayoutProps = {
-  children: ComponentChildren,
-  showNavbar?: boolean
+  children: ComponentChildren
 }
 
 export function Layout(props: LayoutProps) {
-  const { children, showNavbar = true } = props
+  const { children = true } = props
   return (
     <>
       <html lang="en">
@@ -23,7 +22,7 @@ export function Layout(props: LayoutProps) {
           />
         </head>
         <body>
-          {!showNavbar && <Navbar />}
+          <Navbar />
           <div className="container">
             {children}
           </div>
