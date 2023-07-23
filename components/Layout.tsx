@@ -20,10 +20,20 @@ export function Layout(props: LayoutProps) {
             integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
             crossOrigin="anonymous"
           />
+          <script src="https://unpkg.com/htmx.org@1.9.3" integrity="sha384-lVb3Rd/Ca0AxaoZg5sACe8FJKF0tnUgR2Kd7ehUOG5GCcROv5uBIZsOqovBAcWua" crossOrigin="anonymous"></script>
+          <style>
+            {
+              `
+              .list-group-item {
+                transition: all ease-in 1s ;
+              }
+              `
+            }
+          </style>
         </head>
         <body>
           <Navbar />
-          <div className="container">
+          <div id="main-content" className="container">
             {children}
           </div>
         </body>

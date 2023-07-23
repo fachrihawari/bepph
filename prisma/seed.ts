@@ -3,14 +3,16 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 try {
-  const user = await prisma.user.create({
+  await prisma.todo.create({
     data: {
-      name: 'oresto admin',
-      email: 'oresto@hawari.dev',
-      password: await Bun.password.hash("123123")
-    },
+      title: "sleep"
+    }
   })
-  console.log(user)
+  await prisma.todo.create({
+    data: {
+      title: "eat"
+    }
+  })
 } catch (error) {
   console.log(error)
 } finally {
