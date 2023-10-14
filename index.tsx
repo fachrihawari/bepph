@@ -1,7 +1,7 @@
 import { Elysia, t } from 'elysia'
 import { render } from 'preact-render-to-string'
 import { VNode } from 'preact'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from './prisma/client-js'
 
 import { TodoList } from './components/TodoList'
 import { TodoItem } from './components/TodoItem'
