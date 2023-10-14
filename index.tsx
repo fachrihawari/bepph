@@ -7,6 +7,8 @@ import { TodoList } from './components/TodoList'
 import { TodoItem } from './components/TodoItem'
 import { About } from './components/About'
 
+const port = process.env.PORT || 3000
+
 const app = new Elysia()
   .decorate('render', (element: VNode) => {
     const html = render(element)
@@ -54,7 +56,7 @@ const app = new Elysia()
   }, {
     params: t.Object({ id: t.Numeric() })
   })
-  .listen(3000)
+  .listen(port)
 
 export type App = typeof app
 
