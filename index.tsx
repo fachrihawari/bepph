@@ -1,11 +1,11 @@
 import { Elysia, t } from 'elysia'
 import { render } from 'preact-render-to-string'
 import { VNode } from 'preact'
-import { PrismaClient } from './prisma/client-js'
+import { PrismaClient } from '@prisma/client'
 
-import { TodoList } from './components/TodoList'
+import { TodoList } from './pages/TodoList'
 import { TodoItem } from './components/TodoItem'
-import { About } from './components/About'
+import { About } from './pages/About'
 
 const port = process.env.PORT || 3000
 
@@ -29,13 +29,11 @@ const app = new Elysia()
     const todo = await db().todo.create({
       data: body
     })
-    console.log(todo)
-
     return render(<TodoItem todo={todo} />)
   }, {
     body: t.Object({ title: t.String() })
   })
-  .patch('/todos/:id', async ({ db, params, body }) => {
+  .patch('/todos/:id', async ({ db, render, params, body }) => {
     const todo = await db().todo.update({
       where: { id: params.id },
       data: {
@@ -49,7 +47,6 @@ const app = new Elysia()
     body: t.Object({ completed: t.Optional(t.String()) }),
   })
   .delete('/todos/:id', async ({ db, params }) => {
-    console.log(params)
     await db().todo.delete({
       where: { id: params.id }
     })
