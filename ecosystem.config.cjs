@@ -3,7 +3,10 @@ module.exports = {
     {
       name: "bepph-stack",
       script: "bun",
-      args: "start"
+      args: "start",
+      env: {
+        PORT: 3003
+      }
     }
   ]
 }
