@@ -7,7 +7,7 @@ import { TodoList } from './pages/TodoList'
 import { TodoItem } from './components/TodoItem'
 import { About } from './pages/About'
 
-const port = process.env.PORT || 3000
+const port = Bun.env.PORT || 3000
 
 const app = new Elysia()
   .decorate('render', (element: VNode) => {
