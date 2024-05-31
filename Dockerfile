@@ -10,9 +10,10 @@ COPY package.json ./
 COPY bun.lockb ./
 
 RUN bun install
+RUN bunx prisma generate
 
 COPY . .
 
-CMD bunx prisma generate && bunx prisma db push && bun start
+CMD bunx prisma db push && bun start
 
 EXPOSE $PORT
