@@ -1,19 +1,26 @@
 FROM imbios/bun-node:1.1.10-20.12.2-alpine
 
+# Env
 ENV PORT=3000
 ENV NODE_ENV=production
 ENV DATABASE_URL=file:./production.db
 
 WORKDIR /app
 
+# copy package.json and lockfile
 COPY package.json ./
 COPY bun.lockb ./
 
+# Install deps
 RUN bun install
-RUN bunx prisma generate
 
+# Copy source code
 COPY . .
 
-CMD bunx prisma db push && bun start
+# Generate prisma client
+RUN bunx prisma generate
+RUN bunx prisma migrate deploy
+
+CMD bun start
 
 EXPOSE $PORT
