@@ -1,4 +1,4 @@
-FROM oven/bun:1.1.10
+FROM imbios/bun-node:1.1.10-20.12.2-alpine
 
 ENV PORT=3000
 ENV NODE_ENV=production
@@ -10,6 +10,7 @@ COPY package.json ./
 COPY bun.lockb ./
 
 RUN bun install
+RUN bunx prisma generate
 
 COPY . .
 

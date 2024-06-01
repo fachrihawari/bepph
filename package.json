@@ -18,7 +18,6 @@
     "preact-render-to-string": "^6.2.0"
   },
   "scripts": {
-    "prestart": "bunx prisma generate",
     "start": "bun run index.tsx",
     "dev": "bun run --watch index.tsx"
   }
