@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "bun run index.tsx",
-    "dev": "bun run --watch index.tsx"
+    "dev": "bun run --watch index.tsx",
+    "postinstall": "bunx prisma generate"
   }
 }
