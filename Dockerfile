@@ -1,4 +1,4 @@
-FROM imbios/bun-node:1.1.10-20.12.2-alpine
+FROM imbios/bun-node:1.1.10-20.12.2-slim
 
 # Env
 ENV PORT=3000
