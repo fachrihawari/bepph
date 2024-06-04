@@ -5,9 +5,8 @@ ENV PORT=3000
 ENV NODE_ENV=production
 ENV DATABASE_URL=file:./production.db
 
-VOLUME ./prisma
-
 WORKDIR /app
+VOLUME /app/prisma
 
 # copy package.json and lockfile
 COPY package.json ./
