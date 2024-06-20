@@ -1,4 +1,4 @@
-FROM imbios/bun-node:1.1.10-20.12.2-slim
+FROM imbios/bun-node:1.1.10-20.12.2-debian
 
 # Env
 ENV PORT=3000
@@ -13,7 +13,7 @@ COPY package.json ./
 COPY bun.lockb ./
 
 # Add curl for coolify healthcheck
-RUN apt-get install wget
+RUN apt-get install curl
 
 # Install deps
 RUN bun install
