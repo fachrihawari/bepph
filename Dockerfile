@@ -13,7 +13,7 @@ COPY package.json ./
 COPY bun.lockb ./
 
 # Add curl for coolify healthcheck
-RUN apt-get install curl
+RUN apt-get install wget
 
 # Install deps
 RUN bun install
