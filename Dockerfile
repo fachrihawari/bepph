@@ -12,6 +12,9 @@ VOLUME /app/prisma
 COPY package.json ./
 COPY bun.lockb ./
 
+# Add curl for coolify healthcheck
+RUN apt-get install curl
+
 # Install deps
 RUN bun install
 
