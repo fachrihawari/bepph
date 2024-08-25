@@ -1,4 +1,4 @@
-FROM imbios/bun-node:1.1.26-22.7.0-alpine
+FROM imbios/bun-node:1.1.26-22.7.0-slim
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ COPY package.json ./
 COPY bun.lockb ./
 
 # Add curl for docker healthcheck
-RUN apk update && apk add curl
+RUN apt-get update && apt-get install -y curl
 
 # Install deps
 RUN bun install

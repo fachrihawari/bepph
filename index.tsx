@@ -62,4 +62,4 @@ const app = new Elysia()
 
 export type App = typeof app
 
-console.log(`Server is running at http://localhost:${app.server?.port}`)
+console.log(`Server is running at http://${app.server?.hostname}:${app.server?.port}`)
