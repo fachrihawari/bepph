@@ -1,19 +1,13 @@
-FROM imbios/bun-node:1.1.10-20.12.2-debian
-
-# Env
-ENV PORT=3000
-ENV NODE_ENV=production
-ENV DATABASE_URL=file:./production.db
+FROM imbios/bun-node:1.1.26-22.7.0-alpine
 
 WORKDIR /app
-VOLUME /app/prisma
 
 # copy package.json and lockfile
 COPY package.json ./
 COPY bun.lockb ./
 
-# Add curl for coolify healthcheck
-RUN apt-get install curl
+# Add curl for docker healthcheck
+RUN apk update && apk add curl
 
 # Install deps
 RUN bun install
@@ -22,5 +16,3 @@ RUN bun install
 COPY . .
 
 CMD bun start
-
-EXPOSE $PORT

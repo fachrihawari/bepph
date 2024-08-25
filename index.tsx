@@ -7,8 +7,6 @@ import { TodoList } from './pages/TodoList'
 import { TodoItem } from './components/TodoItem'
 import { About } from './pages/About'
 
-const port = Bun.env.PORT || 3000
-
 const app = new Elysia()
   .decorate('render', (element: VNode) => {
     const html = render(element)
@@ -53,7 +51,14 @@ const app = new Elysia()
   }, {
     params: t.Object({ id: t.Numeric() })
   })
-  .listen(port)
+
+  .get('/api/heartbeat', async () => {
+    return { status: "OK" }
+  })
+  .listen({
+    port: Bun.env.PORT || 3000,
+    hostname: '0.0.0.0'
+  })
 
 export type App = typeof app
 
