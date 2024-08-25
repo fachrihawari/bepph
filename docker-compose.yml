@@ -8,6 +8,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - NODE_ENV=${NODE_ENV}
       - PORT=${PORT}
+      - UMAMI_WEBSITE_ID=${UMAMI_WEBSITE_ID}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bepph.rule=Host(`bepph.hawari.dev`)"

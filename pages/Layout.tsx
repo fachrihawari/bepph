@@ -39,7 +39,7 @@ export function Layout(props: LayoutProps) {
 
           {
             Bun.env.NODE_ENV === "production" && (
-              <script async src="https://umami.hawari.dev/script.js" data-website-id="8dde2d8a-6d49-49cf-a4a2-786b400b1b91"></script>
+              <script async src="https://umami.hawari.dev/script.js" data-website-id={Bun.env.UMAMI_WEBSITE_ID}></script>
             )
           }
         </body>
