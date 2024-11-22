@@ -1,4 +1,4 @@
-FROM imbios/bun-node:1.1.26-22.7.0-slim
+FROM imbios/bun-node:1.1.36-22.11.0-slim
 
 WORKDIR /app
 
