@@ -2,25 +2,33 @@ services:
   web:
     build: .
     restart: always
+    ports:
+      - 3000:3000
     expose:
       - ${PORT}
     environment:
       - DATABASE_URL=${DATABASE_URL}
       - NODE_ENV=${NODE_ENV}
       - PORT=${PORT}
-      - UMAMI_WEBSITE_ID=${UMAMI_WEBSITE_ID}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bepph.rule=Host(`bepph.hawari.dev`)"
-      - "traefik.http.routers.bepph.entrypoints=web"
+      - "traefik.http.routers.bepph.entrypoints=websecure"
+      - "traefik.http.routers.bepph.tls.certresolver=letsencryptresolver"
       - "traefik.http.services.bepph.loadbalancer.server.port=${PORT}"
     healthcheck:
       test: ["CMD-SHELL", "curl http://localhost:${PORT}/api/heartbeat"]
-      interval: 5s
+      start_period: 5s
+      interval: 3600s
       timeout: 5s
       retries: 5
+    volumes:
+      - "prisma:/app/prisma"
     networks:
       - traefik-network
+
+volumes:
+  prisma:
 
 networks:
   traefik-network:

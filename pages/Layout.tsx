@@ -36,12 +36,6 @@ export function Layout(props: LayoutProps) {
           <div id="main-content" className="container">
             {children}
           </div>
-
-          {
-            Bun.env.NODE_ENV === "production" && (
-              <script async src="https://umami.hawari.dev/script.js" data-website-id={Bun.env.UMAMI_WEBSITE_ID}></script>
-            )
-          }
         </body>
       </html>
     </>
