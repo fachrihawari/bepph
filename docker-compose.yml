@@ -11,8 +11,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bepph.rule=Host(`bepph.hawari.dev`)"
-      - "traefik.http.routers.bepph.entrypoints=websecure"
-      - "traefik.http.routers.bepph.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.bepph.entrypoints=web"
       - "traefik.http.services.bepph.loadbalancer.server.port=${PORT}"
     healthcheck:
       test: ["CMD-SHELL", "curl http://localhost:${PORT}/api/heartbeat"]
