@@ -9,13 +9,10 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      # ssh into the server
-      - name: SSH into server
+      - name: Pull & Redeploy
         run: |
-          ssh -o StrictHostKeyChecking=no root@192.168.100.3 << 'EOF'
           cd /root/apps/bepph
           git restore .
           git pull origin main
           docker compose down
           docker compose up -d --build
-          EOF
