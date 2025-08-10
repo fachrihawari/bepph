@@ -20,7 +20,7 @@ const app = new Elysia()
     const todos = await db().todo.findMany()
     return render(<TodoList todos={todos} />)
   })
-  .get('/about', async ({ render, db }) => {
+  .get('/about', async ({ render }) => {
     return render(<About />)
   })
   .post('/todos', async ({ db, render, body }) => {
