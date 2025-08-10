@@ -6,7 +6,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # copy package.json and lockfile
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 # Install deps
 RUN bun install --frozen-lockfile
 # Copy source code
