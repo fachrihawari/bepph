@@ -55,6 +55,21 @@ const app = new Elysia()
   .get('/api/heartbeat', async () => {
     return { status: "OK" }
   })
+  .get('/api/seed', async ({ db }) => {
+    await db().todo.deleteMany()
+    await db().todo.createMany({
+      data: [
+        { title: "Bun as the JavaScript Runtime" },
+        { title: "Elysia as Web Framework" },
+        { title: "Prisma as the ORM" },
+        { title: "Preact as the template engine" },
+        { title: "HTMX as the reactivity libs" },
+        { title: "TypeScript as type system" },
+      ]
+    })
+    return { status: "OK" }
+  })
+
   .listen({
     port: Bun.env.PORT || 3000,
     hostname: '0.0.0.0'

@@ -18,8 +18,10 @@
     "preact-render-to-string": "^6.2.0"
   },
   "scripts": {
-    "prestart": "bunx prisma generate && bunx prisma migrate deploy",
+    "migrate": "bunx prisma generate && bunx prisma migrate deploy",
+    "prestart": "bun run migrate",
     "start": "bun run index.tsx",
+    "predev": "bun run migrate",
     "dev": "bun run --watch index.tsx"
   }
 }
